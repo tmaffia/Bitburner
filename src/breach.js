@@ -13,7 +13,7 @@ export async function main(ns) {
 				await getBackdoorAccess(ns, target);
 				break;
 			case 1:
-				if (ns.ls('home', 'BruteSSH')) {
+				if (ns.ls('home').includes('BruteSSH.exe')) {
 					ns.brutessh(target);		
 					await getBackdoorAccess(ns, target);
 					break;
@@ -21,7 +21,7 @@ export async function main(ns) {
 					ns.tprintf('Cannot breach: %1$s without BruteSSH.exe', target);
 				}
 			case 2:
-				if (ns.ls('home', 'FTPCrack')) {
+				if (ns.ls('home').includes('FTPCrack.exe')) {
 					ns.brutessh(target);
 					ns.ftpcrack(target);
 					await getBackdoorAccess(ns, target);
@@ -30,7 +30,7 @@ export async function main(ns) {
 					ns.tprintf('Cannot breach: %1$s without FTPCrack.exe', target);
 				}
 			case 3:
-				if (ns.ls('home', 'RelaySMTP')) {
+				if (ns.ls('home').includes('relaySMTP.exe')) {
 					ns.brutessh(target);
 					ns.ftpcrack(target);
 					ns.relaysmtp(target);
@@ -40,7 +40,7 @@ export async function main(ns) {
 					ns.tprintf('Cannot breach: %1$s without RelaySMTP.exe', target);
 				}
 			case 4:
-				if (ns.ls('home', 'HTTPWorm')) {
+				if (ns.ls('home').includes('HTTPWorm.exe')) {
 					ns.brutessh(target);
 					ns.ftpcrack(target);
 					ns.relaysmtp(target);
@@ -51,7 +51,7 @@ export async function main(ns) {
 					ns.tprintf('Cannot breach: %1$s without HTTPWorm.exe', target);
 				}
 			case 5:
-				if (ns.ls('home', 'SQLInject')) {
+				if (ns.ls('home').includes('SQLInject.exe')) {
 					ns.brutessh(target);
 					ns.ftpcrack(target);
 					ns.relaysmtp(target);

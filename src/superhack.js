@@ -8,7 +8,7 @@ export async function main(ns) {
 		target = ns.getHostname();
 	}
 	
-	securityThreshhold = ns.getServerMinSecurityLevel(target) + 5;
+	securityThreshhold = ns.getServerMinSecurityLevel(target) + 15;
 	const moneyUpperThreshold = ns.getServerMaxMoney(target) * .85;
 	const moneyLowerThreshold = ns.getServerMaxMoney(target) * .3;
 
