@@ -3,7 +3,7 @@ const hackScript = 'superhack.js';
 /** @param {NS} ns */
 export async function main(ns) {
 	const target = ns.args[0];
-
+	
 	if (!ns.hasRootAccess(target)) {
 		const portsRequired = ns.getServerNumPortsRequired(target);
 		ns.print(portsRequired + ' ports required to be opened on server: ' + target);
@@ -19,6 +19,7 @@ export async function main(ns) {
 					break;
 				} else {
 					ns.tprintf('Cannot breach: %1$s without BruteSSH.exe', target);
+					return;
 				}
 			case 2:
 				if (ns.ls('home').includes('FTPCrack.exe')) {
@@ -28,6 +29,7 @@ export async function main(ns) {
 					break;
 				} else {
 					ns.tprintf('Cannot breach: %1$s without FTPCrack.exe', target);
+					return;
 				}
 			case 3:
 				if (ns.ls('home').includes('relaySMTP.exe')) {
@@ -38,6 +40,7 @@ export async function main(ns) {
 					break;
 				} else {
 					ns.tprintf('Cannot breach: %1$s without RelaySMTP.exe', target);
+					return;
 				}
 			case 4:
 				if (ns.ls('home').includes('HTTPWorm.exe')) {
@@ -49,6 +52,7 @@ export async function main(ns) {
 					break;
 				} else {
 					ns.tprintf('Cannot breach: %1$s without HTTPWorm.exe', target);
+					return;
 				}
 			case 5:
 				if (ns.ls('home').includes('SQLInject.exe')) {
@@ -61,6 +65,7 @@ export async function main(ns) {
 					break;
 				} else {
 					ns.tprintf('Cannot breach: %1$s without SQLInject.exe', target);
+					return;
 				}
 		}
 	} else {
@@ -72,7 +77,8 @@ export async function main(ns) {
 async function getBackdoorAccess(ns, target) {
 	if (ns.getHackingLevel() >= ns.getServerRequiredHackingLevel(target)) {
 		await ns.nuke(target);
-		// await ns.installBackdoor(target);
+		// await ns.singularity.connect(target);
+		// await ns.installBackdoor();
 		await ns.print('backdoor and root access achieved for: ' + target);
 	} else {
 		 ns.print('Required hacking level too high on: ' + target);
